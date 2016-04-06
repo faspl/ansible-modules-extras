@@ -204,16 +204,16 @@ def get_vlan_config_commands(vlan, vid):
         vlan = apply_value_map(reverse_value_map, vlan)
 
     VLAN_ARGS = {
-        'name': 'name {name}',
-        'vlan_state': 'state {vlan_state}',
-        'admin_state': '{admin_state}',
-        'mode': 'mode {mode}'
+        'name': 'name {}',
+        'vlan_state': 'state {}',
+        'admin_state': '{}',
+        'mode': 'mode {}'
     }
 
     commands = []
 
     for param, value in vlan.iteritems():
-        command = VLAN_ARGS.get(param).format(**vlan)
+        command = VLAN_ARGS.get(param).format(vlan.get(param))
         if command:
             commands.append(command)
 
