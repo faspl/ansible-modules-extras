@@ -204,10 +204,10 @@ def get_vlan_config_commands(vlan, vid):
         vlan = apply_value_map(reverse_value_map, vlan)
 
     VLAN_ARGS = {
-        'name': 'name {}',
-        'vlan_state': 'state {}',
-        'admin_state': '{}',
-        'mode': 'mode {}'
+        'name': 'name {0}',
+        'vlan_state': 'state {0}',
+        'admin_state': '{0}',
+        'mode': 'mode {0}'
     }
 
     commands = []
@@ -299,7 +299,7 @@ def execute_show_command(command, module, command_type='cli_show'):
     cmds = [command]
     try:
         body = module.execute(cmds, command_type=command_type)
-    except ShellError as clie:
+    except ShellError, clie:
         module.fail_json(msg='Error sending {0}'.format(command),
                          error=str(clie))
     return body[0]
