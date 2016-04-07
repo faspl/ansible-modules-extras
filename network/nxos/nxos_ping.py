@@ -158,7 +158,7 @@ def execute_show_command(command, module):
     cmds = [command]
     try:
         body = module.execute(cmds)
-    except ShellError as clie:
+    except ShellError, clie:
         module.fail_json(msg='Error sending {0}'.format(command),
                          error=str(clie))
     return body[0]
