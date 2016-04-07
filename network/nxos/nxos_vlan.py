@@ -381,7 +381,7 @@ def main():
         else:
             try:
                 module.execute(commands, command_type='cli_conf')
-            except ShellError as clie:
+            except ShellError, clie:
                 module.fail_json(msg='Error sending CLI commands',
                                  error=str(clie), commands=commands)
             changed = True
